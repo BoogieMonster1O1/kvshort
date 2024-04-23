@@ -1,2 +1,9 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1 class="text-5xl font-semibold">URL Shortener</h1>
+
+<form class="flex flex-col" method="post">
+    <input type="text" placeholder="Enter your URL">
+
+    <input type="text" placeholder="Slug (optional)" class="mt-4">
+
+    <button type="submit" class="w-80 transition bg-sky-700 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded mt-4">Shorten</button>
+</form>
