@@ -1,0 +1,6 @@
+name = "kvshort"
+compatibility_date = "2024-04-05"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "8fca5c24892d4b53bf1be5d9af008e89"
