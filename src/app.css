@@ -6,6 +6,6 @@ body {
     @apply dark:bg-neutral-800 bg-neutral-200 text-black dark:text-white;
 }
 
-input[type=text],input[type=password] {
+select,input[type=text],input[type=password],input[type=datetime-local] {
     @apply p-2 text-xl dark:bg-neutral-700 bg-neutral-100 rounded-md;
 }
