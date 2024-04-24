@@ -1,5 +1,6 @@
 import {error, json, redirect} from "@sveltejs/kit";
-import {auth} from "$lib";
+
+import {auth} from "$lib/server";
 
 export async function GET({ params, platform }) {
     if (!platform || !platform.env) {
