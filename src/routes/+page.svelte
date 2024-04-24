@@ -3,6 +3,7 @@
 
     let url = '';
     let slug = '';
+    $: encodedSlug = encodeURI(slug.trim());
     let setToExpire = false;
     let expiration = 'In a day';
     $: hasCustomExpiration = expiration === 'Custom';
@@ -10,6 +11,10 @@
 
     function submit() {
         let expirationDate;
+
+        if (!encodedSlug) {
+            return;
+        }
 
         if (setToExpire) {
             if (hasCustomExpiration) {
@@ -21,14 +26,13 @@
             expirationDate = null;
         }
 
-        fetch('/api/shorten', {
+        fetch(`/${encodedSlug}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 url,
-                slug,
                 expiration: expirationDate
             })
         }).then(response => {
