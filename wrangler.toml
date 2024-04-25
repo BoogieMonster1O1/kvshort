@@ -5,6 +5,3 @@ pages_build_output_dir = ".svelte-kit/cloudflare"
 [[kv_namespaces]]
 binding = "KV"
 id = "8fca5c24892d4b53bf1be5d9af008e89"
-
-[vars]
-API_KEY = "s3cr3t"
