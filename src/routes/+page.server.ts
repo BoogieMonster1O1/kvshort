@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import {redirect} from "@sveltejs/kit";
-import {API_KEY} from "$env/dynamic/private";
+import {env} from "$env/dynamic/private";
 
 export const load: PageServerLoad = async ({ cookies }) => {
     let cookie = cookies.get('api-key');
@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
         redirect(302, '/admin')
     }
     // Incorrect api key
-    if (cookie !== API_KEY) {
+    if (cookie !== env.API_KEY) {
         redirect(302, '/admin')
     }
 }
