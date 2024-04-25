@@ -44,4 +44,7 @@ When deploying, ensure to set the `API_KEY` environment variable for the secret 
 - Make an existing shortlink expire later
 
 ## License
-This project is licensed under the GNU AGPL - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU AGPL - see the [license](LICENSE.md) file for details.
+
+## Privacy
+This project is not an IP grabber. Read our [privacy policy](PRIVACY.md) for details.
