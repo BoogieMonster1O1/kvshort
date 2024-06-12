@@ -8,4 +8,3 @@ export let expirations: {[key:string] :() => Date} = {
     'In a year': () => new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
     'Custom': () => new Date() // no-op
 }
-
