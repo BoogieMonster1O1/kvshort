@@ -1,6 +1,7 @@
 <script lang="ts">
  import {expirations} from "$lib";
  import {page} from "$app/stores";
+ import Header from "$lib/Header.svelte";
 
  let url = '';
  let slug = '';
@@ -52,7 +53,17 @@
          console.error(error);
      });
  }
+
+ function copyLink() {
+     var copyText = document.getElementById("shortlink-link")!;
+     copyText.select();
+     copyText.setSelectionRange(0, 99999);
+     navigator.clipboard.writeText(copyText.value);
+     alert("Copied shortlink!");
+ } 
 </script>
+
+<Header />
 
 <h1 class="text-5xl font-semibold">URL Shortener</h1>
 
@@ -70,13 +81,13 @@
 
     {#if setToExpire}
         <select class="mt-4" bind:value={expiration}>
-            {#each Object.keys(expirations) as key}
+	    {#each Object.keys(expirations) as key}
                 <option value={key}>{key}</option>
-            {/each}
+	    {/each}
         </select>
 
         {#if hasCustomExpiration}
-            <input type="datetime-local" class="mt-4" bind:value={customExpiration}>
+	    <input type="datetime-local" class="mt-4" bind:value={customExpiration}>
         {/if}
     {/if}
 
@@ -87,8 +98,10 @@
     <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
         <div class="flex flex-col gap-2 relative p-4 rounded dark:bg-neutral-700 bg-neutral-200">
             <h2 class="text-2xl">Shortened URL</h2>
-            <a href={`${$page.url.origin}/${encodedSlug}`} class="text-3xl text-sky-400 hover:text-sky-500 transition">{$page.url.origin}/{encodedSlug}</a>
-            <button class="transition bg-sky-700 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded" on:click={() => showModal = false}>Close</button>
+            <a id="shortlink-link" href={`${$page.url.origin}/${encodedSlug}`} class="max-sm:text-sm max-md:text-md text-3xl text-sky-400 hover:text-sky-500 transition">{$page.url.origin}/{encodedSlug}</a>
+
+	    <button class="transition bg-sky-700 hover:bg-sky-800 text-white font-bold px-4 rounded" on:click={copyLink}>Copy Link</button>
+	    <button class="transition bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" on:click={() => showModal = false}>Close</button>
         </div>
     </div>
 {/if}
