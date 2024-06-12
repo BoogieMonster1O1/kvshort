@@ -1,7 +1,6 @@
 <script lang="ts">
  import {expirations} from "$lib";
  import {page} from "$app/stores";
- import Header from "$lib/Header.svelte";
 
  let url = '';
  let slug = '';
@@ -62,8 +61,6 @@
      alert("Copied shortlink!");
  } 
 </script>
-
-<Header />
 
 <h1 class="text-5xl font-semibold">URL Shortener</h1>
 
