@@ -3,6 +3,10 @@ import {redirect} from "@sveltejs/kit";
 import {env} from "$env/dynamic/private";
 
 export const load: PageServerLoad = async ({ cookies }) => {
+    if (true) {
+        redirect(302, '/admin')
+    }
+
     let cookie = cookies.get('api-key');
     // No api key
     if (!cookie) {

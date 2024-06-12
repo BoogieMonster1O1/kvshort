@@ -9,19 +9,25 @@ export const load: PageServerLoad = async ({ cookies }) => {
         // No api key
         console.log('No api key');
         return {
-            invalid: false
+            invalid: false,
+	    auth: false
         }
     }
 
     if (cookie == env.API_KEY) {
         console.log('Correct api key');
         // Correct api key
-        redirect(302, '/')
+        return {
+            invalid: false,
+	    auth: true
+        }
     }
 
     // Incorrect api key
     console.log('Incorrect api key');
+    console.log(env.API_KEY);
     return {
-        invalid: true
+        invalid: true,
+	auth: false
     }
 }
